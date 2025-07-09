@@ -50,5 +50,4 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 80
 
 # Commande pour lancer Apache en mode premier plan (processus principal du conteneur)
-CMD php artisan migrate --force && php artisan l5-swagger:generate
- && apache2-foreground
+CMD php artisan migrate --force && php artisan l5-swagger:generate && apache2-foreground
