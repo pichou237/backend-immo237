@@ -28,8 +28,8 @@ WORKDIR /var/www/html
 RUN composer install 
 
 # Copier le .env.example en .env pour permettre à Laravel de fonctionner
-RUN cp .env.example .env
-
+# Copie le .env.example si pas déjà en place
+RUN if [ ! -f .env ]; then cp .env.example .env; fi
 # Générer la clé d'application Laravel
 RUN php artisan key:generate
 
