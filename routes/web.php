@@ -29,8 +29,13 @@ Route::get('/api/test-fallback', function () {
     return response()->json(['message' => 'Fallback API route works']);
 });
 
+Route::get('/api/documentation', function () {
+    return view('l5-swagger::index');
+});
+
 
 /*
+
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
