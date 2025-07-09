@@ -22,11 +22,15 @@ RUN mkdir -p /root/.composer && chown -R www-data:www-data /root/.composer
 # Définit le dossier de travail pour les commandes suivantes
 WORKDIR /var/www/html
 
-# Installe les dépendances PHP de Laravel sans les dépendances de développement et optimise l'autoload
+# Installer les dépendances Composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Génère la clé d'application Laravel nécessaire pour sécuriser les sessions et autres fonctionnalités
+# Copier le .env.example en .env pour permettre à Laravel de fonctionner
+RUN cp .env.example .env
+
+# Générer la clé d'application Laravel
 RUN php artisan key:generate
+
 
 # Définit le dossier 'public' comme racine du serveur Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
