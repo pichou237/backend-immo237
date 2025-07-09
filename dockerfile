@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     zip \
     libzip-dev && \
-    docker-php-ext-install pdo pdo_mysql zip && \
+    docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip && \
     rm -rf /var/lib/apt/lists/*
 
 # Copie l'exécutable composer depuis l'image officielle composer vers notre image
@@ -31,7 +31,6 @@ RUN cp .env.example .env
 # Générer la clé d'application Laravel
 RUN php artisan key:generate
 
-
 # Définit le dossier 'public' comme racine du serveur Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
@@ -49,4 +48,4 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 80
 
 # Commande pour lancer Apache en mode premier plan (processus principal du conteneur)
-CMD ["apache2-foreground"]
+CMD php artisan migrate --force && apache2-foreground
