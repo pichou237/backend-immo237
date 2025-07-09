@@ -3,12 +3,12 @@ FROM php:8.2-apache
 
 # Met à jour les paquets et installe les dépendances système nécessaires pour Laravel et Composer
 RUN apt-get update && apt-get install -y \
-    git \            # Pour récupérer certains paquets via git
-    unzip \          # Pour décompresser les archives
-    zip \            # Utilisé par certaines dépendances PHP
-    libzip-dev \     # Bibliothèque nécessaire pour l extension zip de PHP
-    && docker-php-ext-install pdo pdo_mysql zip \  # Installe les extensions PHP nécessaires
-    && rm -rf /var/lib/apt/lists/*                 # Nettoie le cache des paquets pour réduire la taille de l'image
+    git \
+    unzip \
+    zip \
+    libzip-dev && \
+    docker-php-ext-install pdo pdo_mysql zip && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copie l'exécutable composer depuis l'image officielle composer vers notre image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
