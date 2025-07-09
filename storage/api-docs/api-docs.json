@@ -1,0 +1,2449 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Gestion de biens immobilier",
+        "description": "Documentation de l'API immoApp",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/avis": {
+            "get": {
+                "tags": [
+                    "Avis"
+                ],
+                "summary": "Liste tous les avis",
+                "operationId": "074b394984977e6dba6974626b17ff22",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Avis"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Avis"
+                ],
+                "summary": "Créer un avis",
+                "operationId": "c6eeaa4be5353dc347263747d29b964d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Avis"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Avis créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Avis"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/avis/{id}": {
+            "get": {
+                "tags": [
+                    "Avis"
+                ],
+                "summary": "Afficher un avis",
+                "operationId": "4167dc39a58a676e2b99040ac98ae715",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Avis trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Avis"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Avis"
+                ],
+                "summary": "Mettre à jour un avis",
+                "operationId": "d1cd0f2a587d195a4e36eb1ad258f878",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Avis"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Avis mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Avis"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Avis"
+                ],
+                "summary": "Supprimer un avis",
+                "operationId": "c158d9539417f8b9af2ad21eec4d7f98",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Avis supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/biens": {
+            "get": {
+                "tags": [
+                    "Biens"
+                ],
+                "summary": "Liste de tous les biens",
+                "operationId": "c963b1c217a3a93e6e25c8517f59f6d3",
+                "responses": {
+                    "200": {
+                        "description": "Liste retournée avec succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Biens"
+                ],
+                "summary": "Créer un nouveau bien",
+                "operationId": "40198ae6ffff58efac4dbfdd6b24c362",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Biens"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Bien créé avec succès"
+                    }
+                }
+            }
+        },
+        "/api/biens/{id}": {
+            "get": {
+                "tags": [
+                    "Biens"
+                ],
+                "summary": "Afficher un bien par son ID",
+                "operationId": "3855f805820761cbb78cd890a445e067",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du bien",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Bien trouvé avec succès"
+                    },
+                    "404": {
+                        "description": "Bien non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Biens"
+                ],
+                "summary": "Mettre à jour un bien existant",
+                "operationId": "009dc45601d8a78ca5e071adb9e25a49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du bien",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Biens"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Bien mis à jour avec succès"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Biens"
+                ],
+                "summary": "Supprimer un bien",
+                "operationId": "637f477673ef6ed2561e4f69a05347d0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du bien",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Bien supprimé avec succès"
+                    }
+                }
+            }
+        },
+        "/api/categorie_biens": {
+            "get": {
+                "tags": [
+                    "CategorieBiens"
+                ],
+                "summary": "Lister catégories",
+                "operationId": "f2a4fa0d328368d571f467308348926c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CategorieBiens"
+                ],
+                "summary": "Créer catégorie",
+                "operationId": "10630faa2dba82bb3f1a237fd116e47c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Créé"
+                    }
+                }
+            }
+        },
+        "/api/categorie_biens/{id}": {
+            "get": {
+                "tags": [
+                    "CategorieBiens"
+                ],
+                "summary": "Afficher catégorie",
+                "operationId": "909b71a7687b3164407ed2f3335283c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "CategorieBiens"
+                ],
+                "summary": "Modifier catégorie",
+                "operationId": "5b6899d03eb985cdce56f43e932da7ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modifié"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "CategorieBiens"
+                ],
+                "summary": "Supprimer catégorie",
+                "operationId": "94432bc7df6c0f3d0fd79e76a59b7669",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Supprimé"
+                    }
+                }
+            }
+        },
+        "/contrats": {
+            "get": {
+                "tags": [
+                    "Contrats"
+                ],
+                "summary": "Liste tous les contrats",
+                "operationId": "53cd237a004976e277cf953b0b8382e4",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Contrats"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contrats"
+                ],
+                "summary": "Créer un contrat",
+                "operationId": "903df457109981b6d3ab8bb04cdef859",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contrats"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Contrat créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Contrats"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contrats/{id}": {
+            "get": {
+                "tags": [
+                    "Contrats"
+                ],
+                "summary": "Afficher un contrat",
+                "operationId": "c77bfcef8bf1d7f186dbde84980fd941",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contrat trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Contrats"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contrats"
+                ],
+                "summary": "Mettre à jour un contrat",
+                "operationId": "09623d786c9c0d92eef20fafa116b497",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Contrats"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contrat mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Contrats"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contrats"
+                ],
+                "summary": "Supprimer un contrat",
+                "operationId": "3a3b7dc11afbec7eb5ec0f14d65385b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Contrat supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/historique-payements": {
+            "get": {
+                "tags": [
+                    "HistoriquePayements"
+                ],
+                "summary": "Liste tous les historiques de payement",
+                "operationId": "8e18b750f9f481e07296aafa78e95eb1",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HistoriquePayements"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "HistoriquePayements"
+                ],
+                "summary": "Créer un historique de payement",
+                "operationId": "3b5d745488e7f9fe12af129778611872",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HistoriquePayements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Historique créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HistoriquePayements"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/historique-payements/{id}": {
+            "get": {
+                "tags": [
+                    "HistoriquePayements"
+                ],
+                "summary": "Afficher un historique de payement",
+                "operationId": "db2b678492985820915ccdaef254dcb3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Historique trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HistoriquePayements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "HistoriquePayements"
+                ],
+                "summary": "Mettre à jour un historique de payement",
+                "operationId": "7c44eafcf7e8c876892d8b4aa27b8d9f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HistoriquePayements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Historique mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HistoriquePayements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "HistoriquePayements"
+                ],
+                "summary": "Supprimer un historique de payement",
+                "operationId": "7bf813942f3afd492597a9fa6a7c116c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Historique supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/payements": {
+            "get": {
+                "tags": [
+                    "Payements"
+                ],
+                "summary": "Liste tous les payements",
+                "operationId": "4d17b6fc5b3c353934034c9a0082d30e",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Payements"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Payements"
+                ],
+                "summary": "Créer un payement",
+                "operationId": "c46eacdb787d3d9e40763749a0d0cddb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Payements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Payement créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payements"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payements/{id}": {
+            "get": {
+                "tags": [
+                    "Payements"
+                ],
+                "summary": "Afficher un payement",
+                "operationId": "8662b1d3f0ab5ba11bcaa8e35b3f7114",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Payement trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Payements"
+                ],
+                "summary": "Mettre à jour un payement",
+                "operationId": "534f33ca98072f42366b055a5e868b79",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Payements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Payement mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Payements"
+                ],
+                "summary": "Supprimer un payement",
+                "operationId": "10cc3412d4964923cb69b94427729cc5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Payement supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/photos": {
+            "get": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Liste toutes les photos",
+                "operationId": "d34843ba16a0674d6f5da4274b3f5b23",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Photos"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Créer une photo",
+                "operationId": "3a21edcca99bb9e6660ee5da3df6d317",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Photos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Photo créée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Photos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/photos/{id}": {
+            "get": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Afficher une photo",
+                "operationId": "49b1aa37e549db9adc62acc548114b41",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Photo trouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Photos"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Mettre à jour une photo",
+                "operationId": "a7f45c1b5dea13b638d9a20517581436",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Photos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Photo mise à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Photos"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Photos"
+                ],
+                "summary": "Supprimer une photo",
+                "operationId": "1fb39d12549c3c418273cf40f089c393",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Photo supprimée"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/quartiers": {
+            "get": {
+                "tags": [
+                    "Quartiers"
+                ],
+                "summary": "Liste tous les quartiers",
+                "operationId": "6b0fde1ea0c688bfa7621d4a465a5aab",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Quartiers"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Quartiers"
+                ],
+                "summary": "Créer un quartier",
+                "operationId": "c2bf53c8080ef2a6a756b07aeda5bce7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Quartiers"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Quartier créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quartiers"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quartiers/{id}": {
+            "get": {
+                "tags": [
+                    "Quartiers"
+                ],
+                "summary": "Afficher un quartier",
+                "operationId": "0765ba4177700a4865afa97f339317ba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Quartier trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quartiers"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Quartiers"
+                ],
+                "summary": "Mettre à jour un quartier",
+                "operationId": "0da37bfad5a58af8310fc0592eb5b6c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Quartiers"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Quartier mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quartiers"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Quartiers"
+                ],
+                "summary": "Supprimer un quartier",
+                "operationId": "d9847d6fd9eac41e5ec6a9c1ddbc1b02",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Quartier supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/reservations": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Liste toutes les réservations",
+                "operationId": "ac05133c4d78a4319a5f091fa1686b3b",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Créer une réservation",
+                "operationId": "180a4e6945149199996c45b5a6c9744e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Reservations"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Réservation créée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Reservations"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reservations/{id}": {
+            "get": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Afficher une réservation",
+                "operationId": "86dce918b933097120633d661bfa76be",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réservation trouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Reservations"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Mettre à jour une réservation",
+                "operationId": "022ec5b774ed6bc9f3df70ddcd097b81",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Reservations"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Réservation mise à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Reservations"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Reservations"
+                ],
+                "summary": "Supprimer une réservation",
+                "operationId": "15a6c69cf1bb7c912b74af936a509142",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Réservation supprimée"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/type_biens": {
+            "get": {
+                "tags": [
+                    "TypeBiens"
+                ],
+                "summary": "Lister types",
+                "operationId": "2fcad4a252fd4481968e525c3f3fdb21",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TypeBiens"
+                ],
+                "summary": "Créer type",
+                "operationId": "f4e6af76ad921623afa4719ce89946ea",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Créé"
+                    }
+                }
+            }
+        },
+        "/api/type_biens/{id}": {
+            "get": {
+                "tags": [
+                    "TypeBiens"
+                ],
+                "summary": "Afficher type",
+                "operationId": "29e0c00758a5d75d3df7338f659f57a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "TypeBiens"
+                ],
+                "summary": "Modifier type",
+                "operationId": "a986a50c22fb0bc92821aecf3520ca16",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modifié"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TypeBiens"
+                ],
+                "summary": "Supprimer type",
+                "operationId": "45342a7d5396276b5889b914c56c0e66",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Supprimé"
+                    }
+                }
+            }
+        },
+        "/type-payements": {
+            "get": {
+                "tags": [
+                    "TypePayements"
+                ],
+                "summary": "Liste tous les types de payement",
+                "operationId": "4d8f334b0c4b8177b9cf9320f0d887ad",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypePayements"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TypePayements"
+                ],
+                "summary": "Créer un type de payement",
+                "operationId": "d48cf303c11551597f308ff0e59cdd7f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypePayements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Type créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypePayements"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/type-payements/{id}": {
+            "get": {
+                "tags": [
+                    "TypePayements"
+                ],
+                "summary": "Afficher un type de payement",
+                "operationId": "ead4ed3f7201a6bf79a31b837e91531d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Type trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypePayements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "TypePayements"
+                ],
+                "summary": "Mettre à jour un type de payement",
+                "operationId": "3a41f7796c54bcccb6062ffd2f32ba81",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypePayements"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Type mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypePayements"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TypePayements"
+                ],
+                "summary": "Supprimer un type de payement",
+                "operationId": "3dabf900c5f28cfc35f5c4b33241f835",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Type supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/type-utilisateurs": {
+            "get": {
+                "tags": [
+                    "TypeUtilisateurs"
+                ],
+                "summary": "Liste tous les types d'utilisateur",
+                "operationId": "86b66fad2031b9becda867cd51025a37",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TypeUtilisateurs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TypeUtilisateurs"
+                ],
+                "summary": "Créer un type d'utilisateur",
+                "operationId": "df7f42a46eeffa125da36d6367be3c1f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeUtilisateurs"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Type créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeUtilisateurs"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/type-utilisateurs/{id}": {
+            "get": {
+                "tags": [
+                    "TypeUtilisateurs"
+                ],
+                "summary": "Afficher un type d'utilisateur",
+                "operationId": "134a8efb4d94a73054df8f3e3e8922bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Type trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeUtilisateurs"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "TypeUtilisateurs"
+                ],
+                "summary": "Mettre à jour un type d'utilisateur",
+                "operationId": "32fb6d71b1f60793a2ff5fdc22fdd1f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeUtilisateurs"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Type mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeUtilisateurs"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TypeUtilisateurs"
+                ],
+                "summary": "Supprimer un type d'utilisateur",
+                "operationId": "48be682f582acc501cb64004461819b6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Type supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/utilisateurs": {
+            "get": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Liste tous les utilisateurs",
+                "operationId": "3ca4091dbd6454ea1ec2eb43f5db6c3b",
+                "responses": {
+                    "200": {
+                        "description": "Succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Utilisateurs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Créer un utilisateur",
+                "operationId": "01edc46161789482f77838a996fd3943",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Utilisateurs"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Utilisateur créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Utilisateurs"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/utilisateurs/{id}": {
+            "get": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Afficher un utilisateur",
+                "operationId": "df179f2c14f50a5e95965e8bc116aae3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Utilisateur trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Utilisateurs"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Mettre à jour un utilisateur",
+                "operationId": "e75cbf2628721d46f0d8657a1e9e355b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Utilisateurs"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Utilisateur mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Utilisateurs"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Supprimer un utilisateur",
+                "operationId": "d6292122f5d9bd795ebef9ade111a1cb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Utilisateur supprimé"
+                    },
+                    "404": {
+                        "description": "Non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/villes": {
+            "get": {
+                "tags": [
+                    "Villes"
+                ],
+                "summary": "Lister villes",
+                "operationId": "45da93baea60a6e346e095f1f1569e6b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Villes"
+                ],
+                "summary": "Créer ville",
+                "operationId": "1fa6a9eaa07969c49560b1d81c194187",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Créé"
+                    }
+                }
+            }
+        },
+        "/api/villes/{id}": {
+            "get": {
+                "tags": [
+                    "Villes"
+                ],
+                "summary": "Afficher ville",
+                "operationId": "7adf9a9bb69345c9df87412b4796f6e0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Villes"
+                ],
+                "summary": "Modifier ville",
+                "operationId": "8958521a2fa599e035a7ae74b37ce61e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modifié"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Villes"
+                ],
+                "summary": "Supprimer ville",
+                "operationId": "30fd610df817cb61b8cf58b20a179ad2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Supprimé"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Avis": {
+                "required": [
+                    "utilisateur_id",
+                    "commentaire",
+                    "note"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "utilisateur_id": {
+                        "type": "integer"
+                    },
+                    "commentaire": {
+                        "type": "string"
+                    },
+                    "note": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Biens": {
+                "title": "Biens",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nom": {
+                        "type": "string",
+                        "example": "Jean"
+                    },
+                    "prenom": {
+                        "type": "string",
+                        "example": "Dupont"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "jean.dupont@example.com"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "CategorieBiens": {
+                "required": [
+                    "libelle"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "libelle": {
+                        "type": "string",
+                        "example": "Meublé"
+                    },
+                    "type_bien_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Contrats": {
+                "required": [
+                    "description"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "HistoriquePayements": {
+                "required": [
+                    "payement_id",
+                    "date_paiement"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "payement_id": {
+                        "type": "integer"
+                    },
+                    "date_paiement": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Payements": {
+                "required": [
+                    "montant",
+                    "type_payement_id",
+                    "reservation_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "montant": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "type_payement_id": {
+                        "type": "integer"
+                    },
+                    "reservation_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Photos": {
+                "required": [
+                    "url"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "bien_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Quartiers": {
+                "required": [
+                    "nom",
+                    "ville_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nom": {
+                        "type": "string",
+                        "example": "Bonapriso"
+                    },
+                    "ville_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Reservations": {
+                "required": [
+                    "utilisateur_id",
+                    "contrat_id",
+                    "date_debut",
+                    "date_fin"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "utilisateur_id": {
+                        "type": "integer"
+                    },
+                    "contrat_id": {
+                        "type": "integer"
+                    },
+                    "date_debut": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "date_fin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeBiens": {
+                "title": "TypeBiens",
+                "required": [
+                    "libelle"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "libelle": {
+                        "type": "string",
+                        "example": "Appartement"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "TypePayements": {
+                "required": [
+                    "libelle"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "libelle": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeUtilisateurs": {
+                "required": [
+                    "libelle"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "libelle": {
+                        "type": "string",
+                        "example": "Propriétaire"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Utilisateurs": {
+                "required": [
+                    "nom",
+                    "prenom",
+                    "email",
+                    "mot_de_passe",
+                    "type_utilisateur_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "mot_de_passe": {
+                        "type": "string"
+                    },
+                    "type_utilisateur_id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Villes": {
+                "required": [
+                    "nom"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nom": {
+                        "type": "string",
+                        "example": "Douala"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Avis",
+            "description": "Gestion des avis"
+        },
+        {
+            "name": "Biens",
+            "description": "Gestion des biens immobiliers"
+        },
+        {
+            "name": "Contrats",
+            "description": "Gestion des contrats"
+        },
+        {
+            "name": "HistoriquePayements",
+            "description": "Gestion des historiques de payement"
+        },
+        {
+            "name": "Payements",
+            "description": "Gestion des payements"
+        },
+        {
+            "name": "Photos",
+            "description": "Gestion des photos"
+        },
+        {
+            "name": "Quartiers",
+            "description": "Gestion des quartiers"
+        },
+        {
+            "name": "Reservations",
+            "description": "Gestion des réservations"
+        },
+        {
+            "name": "TypeBiens",
+            "description": "Gestion des TypeBiens immobiliers"
+        },
+        {
+            "name": "TypePayements",
+            "description": "Gestion des types de payement"
+        },
+        {
+            "name": "TypeUtilisateurs",
+            "description": "Gestion des types d'utilisateur"
+        },
+        {
+            "name": "Utilisateurs",
+            "description": "Gestion des utilisateurs"
+        },
+        {
+            "name": "Villes",
+            "description": "Gestion des Villes"
+        },
+        {
+            "name": "CategorieBiens",
+            "description": "CategorieBiens"
+        }
+    ]
+}
