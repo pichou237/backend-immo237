@@ -33,6 +33,9 @@ RUN cp .env.example .env
 # Générer la clé d'application Laravel
 RUN php artisan key:generate
 
+# Générer la documentation Swagger
+RUN php artisan l5-swagger:generate
+
 # Définit le dossier 'public' comme racine du serveur Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
@@ -50,4 +53,4 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 80
 
 # Commande pour lancer Apache en mode premier plan (processus principal du conteneur)
-CMD php artisan migrate --force && php artisan l5-swagger:generate && apache2-foreground
+CMD php artisan migrate --force && apache2-foreground
