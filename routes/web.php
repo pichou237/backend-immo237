@@ -31,7 +31,7 @@ Route::get('/api/test-fallback', function () {
 
 Route::get('/api/documentation', function () {
     return view('l5-swagger::index', [
-        'documentation' => config('l5-swagger.documentations.default'),
+        'documentation' => 'default',
         'documentationTitle' => config('app.name') . ' API Documentation'
     ]);
 });
