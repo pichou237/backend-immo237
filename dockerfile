@@ -25,7 +25,7 @@ RUN mkdir -p /root/.composer && chown -R www-data:www-data /root/.composer
 WORKDIR /var/www/html
 
 # Installer les dépendances Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 # Copier le .env.example en .env pour permettre à Laravel de fonctionner
 RUN cp .env.example .env

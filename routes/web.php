@@ -29,12 +29,12 @@ Route::get('/api/test-fallback', function () {
     return response()->json(['message' => 'Fallback API route works']);
 });
 
-Route::get('/api/documentation', function () {
-    return view('l5-swagger::index', [
-        'documentation' => 'default',
-        'documentationTitle' => config('app.name') . ' API Documentation'
-    ]);
-});
+// Route::get('/api/documentation', function () {
+//     return view('l5-swagger::index', [
+//         'documentation' => 'default',
+//         'documentationTitle' => config('app.name') . ' API Documentation'
+//     ]);
+// });
 
 
 
